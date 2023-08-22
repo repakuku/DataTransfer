@@ -20,6 +20,12 @@ final class MainViewController: UIViewController {
         getRandomValueButton.layer.cornerRadius = 10
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingsVC = segue.destination as? SettingsViewController else { return }
+        settingsVC.minimumValue = minimumValueLabel.text
+        settingsVC.maximumValue = maximumValueLabel.text
+    }
+    
     @IBAction func getRandomButtonTapped() {
         let minimumValue = Int(minimumValueLabel.text ?? "") ?? 0
         let maximumValue = Int(maximumValueLabel.text ?? "") ?? 100
